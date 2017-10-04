@@ -1,1 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+    
+    <script>
+        function setup() {
+            createCanvas(800,600);
+        }
+
+        function draw() {
+            //Ear
+            fill(198,234,200)
+            triangle(200,30,225,0,250,30)
+            rect(215,30,20,30)
+            triangle(480,30,510,0,540,30)
+            rect(500,30,20,30)
+            //Face
+            fill(255,255,102)
+            rect(200,60,335,140)
+            fill(198,234,200)
+            rect(220,80,295,100)
+            fill(255,255,255)
+            ellipse(280,120,40,40)
+            ellipse(455,120,40,40)
+            fill(0,0,0)
+            ellipse(280,120,10,10)
+            fill(0,0,0)
+            ellipse(455,120,10,10)
+            //Mouth
+            fill(255,255,255)
+            rect(300,150,120,20)
+            //Body
+            fill(255,51,255)
+            quad(200,200,140,260,600,260,535,200)
+            //The trapziod
+            fill(255,255,102)
+            ellipse(140,320,40,40)
+            ellipse(600,320,40,40)
+            //Body
+            fill(255,0,0)
+            rect(140,260,460,120)
+            //Arm
+            line(620,310,680,280)
+            line(120,320,60,280)
+            fill(255,255,102,)
+            ellipse(40,275,40,40)
+            ellipse(700,280,40,40)
+            ellipse(240,320,20,20)
+            ellipse(480,320,20,20)
+            //Letter "Z" in the body
+            textAlign(CENTER)
+            stroke(0,0,0)
+            strokeWeight(3)
+            textSize(100)
+            fill(255,255,102)
+            text("Z",360,350)
+        
+            
+        }
+    </script>
+</head>
+
+<body>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/Janinez0367/p5js/blob/gh-pages/Zoog.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+
+</html>
