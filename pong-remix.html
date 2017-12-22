@@ -12,6 +12,7 @@
         var paddleHeight = 30;
         var paddleX=245
         var score = 0 
+        var paddleLength=200
 
         function setup() {
             createCanvas(800,600);
@@ -50,6 +51,7 @@
                 if (ballX > paddleX && ballX < paddleX + 200) {//When the ball do hit the paddle 
                     ballSpeedY = ballSpeedY * -1;//Then the ball will bounce the other direction
                   score=score+1// every time the ball hits the paddle the score goes up by one
+                  paddleLength=paddleLength-4//everytime the ball hits the paddle the paddle gets shorter 
                 }
               
                 else {
