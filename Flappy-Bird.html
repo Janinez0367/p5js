@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+
+    <script>
+        var bird;
+        var tunnels = []
+        
+
+        function setup() {
+            createCanvas(450,450);
+            bird=new Bird();
+            
+        }
+
+        function draw(){
+        background(0);
+        bird.show();
+        bird.fall();
+        noStroke();
+        
+        fill(79,255,137);
+        if(frameCount % 35 == 0){
+          tunnels.push(new Tunnel());
+          }
+        for(i = 0; i < tunnels.length; i++){
+        tunnels[i].move();
+        tunnels[i].display();
+      }
+          checkCollide();
+        }
+      
+      
+      
+        function keyPressed(){
+            if (keyCode == 32){
+                bird.up();
+            }
+        }
+      
+      function Tunnel(){
+        this.x = width;
+        this.y = random(height-100/2, height-180);
+        this.speed = -3;
+        this.display = function() {
+          noStroke();  
+          }
+        
+        this.move = function(){
+          this.x += this.speed;
+          if(this.x >= width){
+            this.x = 0;
+          }
+          
+        }
+        this.display = function(){
+          rect(this.x,this.y,35,height - this.y);
+          rect(this.x,0,35,height-this.y);
+        }
+       }     
+        function Bird(){
+            this.birdY=height/2
+            this.birdX=100;
+            
+            this.gravity=0.1;
+            this.upForce=-4;
+            this.velocity=0;
+            
+            this.show=function(){//draw the bird
+                clear()
+                fill(0)
+                ellipse(this.birdX,this.birdY,25,25)
+            }
+            
+            this.up=function(){//when pressed space the bird goes up
+                this.velocity += this.upForce;
+                
+                
+            }
+            
+            this.fall=function() {//when the mouse is not ressed the bird drops to the bottom
+                this.velocity+=this.gravity;
+                this.birdY+= this.velocity;
+                
+                if(this.birdY>height){//the bird doesn't disappear off the canvas
+                    this.birdY=height
+                    this.velocity=0;
+                }
+                if(this.birdY<0){
+                    this.birdY=height
+                    this.velocity=0;
+                }
+            }
+           
+            }
+      
+      function checkCollide(){
+        console.log("test1")
+        for(var i = 0; i < tunnels.length; i++){
+          console.log("test2")
+          if(bird.birdX > tunnels[i].x && bird.birdX < tunnels[i].x + 35  ){
+            console.log("test3")
+            if(bird.birdY > tunnels[i].y || bird.birdY < (height - tunnels[i].y) ){
+              fill(255,0,0)
+              textSize(50)
+              text("Game Over !!!!", 100, height/2);
+              noLoop()
+              console.log("test4")
+            }
+          }
+        }
+      }
+            
+        
+    </script>
+</head>
+
+<body>
+<form><input TYPE="button" onClick="history.go(0)" value="Reset"></form>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/Janinez0367/p5js/blob/master/Flappy-Bird.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+
+</html>
